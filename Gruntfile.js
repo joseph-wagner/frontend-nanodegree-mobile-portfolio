@@ -1,4 +1,5 @@
 var ngrok = require('ngrok');
+var mozjpeg = require('imagemin-mozjpeg');
 
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -109,6 +110,10 @@ module.exports = function(grunt) {
         },
         imagemin: {
             dynamic: {
+                options: {
+                    optimizationLevel: 90,
+                    use: [mozjpeg()]
+                },
                 files: [{
                     expand: true,
                     cwd: 'img',

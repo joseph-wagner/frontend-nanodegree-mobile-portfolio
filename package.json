@@ -27,5 +27,8 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-pagespeed": "^2.0.1",
     "ngrok": "^2.2.15"
+  },
+  "dependencies": {
+    "imagemin-mozjpeg": "^6.0.0"
   }
 }
