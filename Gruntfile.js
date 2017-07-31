@@ -103,7 +103,7 @@ module.exports = function(grunt) {
             prod: {
                 options: {
                   locale: "en_GB",
-                  strategy: "desktop",
+                  strategy: "mobile",
                   threshold: 90
                 }
             }
