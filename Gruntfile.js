@@ -1,33 +1,33 @@
-var ngrok = require('ngrok');
+// var ngrok = require('ngrok');
 var mozjpeg = require('imagemin-mozjpeg');
 
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-pagespeed');
+    // grunt.loadNpmTasks('grunt-pagespeed');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
 
-    grunt.registerTask('default', ['psi-ngrok','browserSync']);
-    grunt.registerTask('upload', ['jshint', 'csslint', 'cssmin', 'uglify', 'imagemin']);
+    grunt.registerTask('default', ['browserSync']);
+    // grunt.registerTask('ngrok-psi', ['psi-ngrok']);
+    grunt.registerTask('lint', ['jshint', 'csslint', 'cssmin', 'uglify', 'imagemin']);
 
-    grunt.registerTask('psi-ngrok', function() {
-        var done = this.async();
-        var port = 900;
-        ngrok.connect(port, function(err, url) {
-            if (err !== null) {
-                grunt.fail.fatal(err);
-                return done();
-            }
-            grunt.config.set('pagespeed.options.url', url);
-            grunt.task.run('pagespeed');
-            done();
-        });
-    });
+    // grunt.registerTask('psi-ngrok', function() {
+    //     var done = this.async();
+    //     var port = 900;
+    //     ngrok.connect(port, function(err, url) {
+    //         if (err !== null) {
+    //             grunt.fail.fatal(err);
+    //             return done();
+    //         }
+    //         grunt.config.set('pagespeed.options.url', url);
+    //         grunt.task.run('pagespeed');
+    //         done();
+    //     });
+    // });
 
     grunt.initConfig({
         jshint: {
@@ -95,19 +95,19 @@ module.exports = function(grunt) {
                 open: false
             }
         },
-        pagespeed: {
-            options: {
-                key: 'AIzaSyD5rLxUcpWXkJ_gWW3xI58hoBDBXDIRwNc',
-                url: "https://github.com"
-            },
-            prod: {
-                options: {
-                  locale: "en_GB",
-                  strategy: "mobile",
-                  threshold: 90
-                }
-            }
-        },
+        // pagespeed: {
+        //     options: {
+        //         key: 'AIzaSyD5rLxUcpWXkJ_gWW3xI58hoBDBXDIRwNc',
+        //         url: "https://github.com"
+        //     },
+        //     prod: {
+        //         options: {
+        //           locale: "en_GB",
+        //           strategy: "mobile",
+        //           threshold: 90
+        //         }
+        //     }
+        // },
         imagemin: {
             dynamic: {
                 options: {
