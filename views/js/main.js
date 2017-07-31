@@ -451,6 +451,8 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
 
+    // Layout trigger before looping through style changes
+    // Width is same for all pizzas anyway
     var pizzas = document.querySelectorAll(".randomPizzaContainer");
     var newWidth = determineWidth(pizzas[0], size);
 
